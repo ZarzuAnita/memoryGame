@@ -1,0 +1,17 @@
+#screen {
+    background-color: royalblue;
+}
+
+#board {
+    color: red;
+}
+
+.card {
+    height: 100px;
+    width: 100px;
+    background-color: black;
+}
+
+#endScreen {
+    color: red;
+}

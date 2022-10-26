@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+    <title>Memory!</title>
+</head>
+<body>
+    <div id="screen">
+        <div id="userForm">
+            <form>
+                <label>Player 1 Name: 
+                    <input id="playerOneInput" type="text">
+                </label>
+                <label>Player 2 Name: 
+                    <input id="playerTwoInput" type="text">
+                </label>
+                <p>Selecciona un nivel: 
+                    <label>12 Cartas<input type="radio" name="level" value="12"></label>
+                    <label>24 Cartas<input type="radio" name="level" value="24"></label>
+                    <label>48 Cartas<input type="radio" name="level" value="48"></label>
+                </p>
+            </form>
+            <button>Start Game!</button>
+        </div>
+        <div id="board">
+            Aqui hay un tablero
+            <div class="card">una carta</div>
+        </div>
+        <div id="endScreen">
+            Aqui te muestra el ganador
+        </div>
+    </div>
+</body>
+</html>
