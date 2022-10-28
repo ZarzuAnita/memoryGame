@@ -4,12 +4,18 @@
 
 #board {
     color: red;
+    width: 156px;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .card {
     height: 100px;
-    width: 100px;
-    background-color: black;
+    width: 50px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 30px;
+    color: yellow;
 }
 
 #endScreen {
