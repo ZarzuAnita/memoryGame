@@ -6,31 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <script src="index.js" defer></script>
-    <title>Memory!</title>
+    <title>Memory Game!</title>
 </head>
 <body>
     <div id="screen">
         <div id="userForm">
             <form>
-                <label>Player 1 Name: 
-                    <input id="playerOneInput" type="text">
-                </label>
-                <label>Player 2 Name: 
-                    <input id="playerTwoInput" type="text">
-                </label>
-                <p>Selecciona un nivel: 
-                    <label>12 Cartas<input type="radio" name="level" value="12"></label>
-                    <label>24 Cartas<input type="radio" name="level" value="24"></label>
-                    <label>48 Cartas<input type="radio" name="level" value="48"></label>
-                </p>
+                <div class="inputDiv">
+                    <label>Player 1 Name:
+                        <input id="playerOneInput" type="text">
+                    </label>
+                </div>
+                <div class="inputDiv">
+                    <label>Player 2 Name:
+                        <input id="playerTwoInput" type="text">
+                    </label>
+                </div>
+                <div class="inputDiv">
+                    <label>Selecciona un nivel:
+                        <select id="level">
+                        <option></option>
+                        <option value="12">12 Cards</option>
+                        <option value="24">24 Cards</option>
+                        <option value="48">48 Cards</option>
+                        </select>
+                    </label>
+                </div>
             </form>
+            <div class="inputDiv">
             <button onclick="initializeGame()">Start Game!</button>
+            </div>
         </div>
         <div id="board">
             <p>Aqui hay un tablero</p>
         </div>
         <div id="endScreen">
             <p>Aqui te muestra el ganador</p>
+            <button onclick="resetGame()">Play Again!</button>
         </div>
     </div>
 </body>
