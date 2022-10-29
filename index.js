@@ -13,8 +13,9 @@ const gameState = {
     playerTwoName: "",
     playerOneScore: 0,
     playerTwoScore: 0,
+    maxPoints: 0,
     playerOneTurn: true,
-    maxPoints: 0
+    currentCards: []
 };
 
 function initializeGame(){
@@ -51,6 +52,7 @@ function placeBoard(numberOfCards){
         newDiv.className = "card";
         newDiv.dataset.value = pairValue;
         newDiv.dataset.faceUp = 0;
+        newDiv.dataset.taken = 0;
         newDiv.addEventListener("click", handleCardClick);
         parent.appendChild(newDiv);
     });
@@ -71,15 +73,52 @@ function randomOrderArray(numberOfCards){
 
 function handleCardClick(event){
     const currentCard = event.target;
-    console.log(currentCard);
-    if (currentCard.dataset.faceUp == 0){
+    if (currentCard.dataset.faceUp === "0"){
+        gameState.currentCards.push(currentCard.dataset.value);
         currentCard.innerHTML = currentCard.dataset.value;
         currentCard.dataset.faceUp = 1;
+        if (gameState.currentCards.length === 2) {
+            setTimeout(checkOutcome, 1500);
+        }
+        console.log(gameState);
+    }
+}
+
+function checkOutcome(){
+    console.log("Decide what should happen");
+    if (gameState.currentCards[0] === gameState.currentCards[1]){
+        if (gameState.playerOneTurn)
+            gameState.playerOneScore++;
+        else
+            gameState.playerTwoScore++;
+        removeCardVisibility();
     }
     else {
-        currentCard.innerHTML = "";
-        currentCard.dataset.faceUp = 0;
+        gameState.playerOneTurn = !gameState.playerOneTurn;
+        revertCardFaces();
     }
+    gameState.currentCards = [];
+}
+
+function removeCardVisibility(){
+    const cardsArray = document.getElementsByClassName("card");
+    for (let card of cardsArray){
+        if (card.dataset.faceUp === "1"){
+            card.dataset.faceUp = 0;
+            card.style.visibility = "hidden";
+        }
+    };
+}
+
+function revertCardFaces(){
+    const cardsArray = document.getElementsByClassName("card");
+    console.log(cardsArray);
+    for (let card of cardsArray){
+        if (card.dataset.faceUp === "1"){
+            card.innerHTML = "";
+            card.dataset.faceUp = 0;
+        }
+    };
 }
 
 function resetGame(){
