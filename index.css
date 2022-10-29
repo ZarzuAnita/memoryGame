@@ -25,12 +25,31 @@ button {
     border-radius: 25px;
 }
 
+button:hover {
+    opacity: 0.9;
+}
+
+#gameScreen {
+    flex-flow: column nowrap;
+    width: 35%;
+    justify-content: center;
+    align-items: center;
+}
+
 #board {
     color: red;
-    width: 156px;
+    width: 100%;
     border: 1px solid red;
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
+}
+
+#statusBar {
+    border: 1px solid yellow;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
 }
 
 .card {

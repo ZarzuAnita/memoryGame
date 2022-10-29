@@ -14,10 +14,10 @@ const gameState = {
     playerOneScore: 0,
     playerTwoScore: 0,
     playerOneTurn: true,
+    maxPoints: 0
 };
 
 function initializeGame(){
-    //TODO: validate input: two names and a selection
     const playerOneName = document.getElementById("playerOneInput").value;
     const playerTwoName = document.getElementById("playerTwoInput").value;
     const numberOfCards = parseInt(document.getElementById("level").value);
@@ -50,21 +50,20 @@ function placeBoard(numberOfCards){
         const newDiv = document.createElement("div");
         newDiv.className = "card";
         newDiv.dataset.value = pairValue;
+        newDiv.dataset.faceUp = 0;
         newDiv.addEventListener("click", handleCardClick);
         parent.appendChild(newDiv);
     });
 }
 
 function randomOrderArray(numberOfCards){
-    const pairsArray = [numberOfCards];
-    const randomArray = [numberOfCards];
-    for (let i = 0; i < numberOfCards / 2; i++){
-        pairsArray[i * 2] = i;
-        pairsArray[i * 2 + 1] = i;
-    }
+    const pairsArray = [];
+    const randomArray = [];
+    for (let i = 0; i < numberOfCards / 2; i++)
+        pairsArray.push(i, i);
     for (let i = 0; i < numberOfCards; i++){
         const randomIndex = Math.floor(Math.random() * pairsArray.length);
-        randomArray[i] = pairsArray[randomIndex];
+        randomArray.push(pairsArray[randomIndex]);
         pairsArray.splice(randomIndex, 1);
     }
     return (randomArray);
@@ -73,9 +72,17 @@ function randomOrderArray(numberOfCards){
 function handleCardClick(event){
     const currentCard = event.target;
     console.log(currentCard);
-    currentCard.innerHTML = currentCard.dataset.value;
+    if (currentCard.dataset.faceUp == 0){
+        currentCard.innerHTML = currentCard.dataset.value;
+        currentCard.dataset.faceUp = 1;
+    }
+    else {
+        currentCard.innerHTML = "";
+        currentCard.dataset.faceUp = 0;
+    }
 }
 
 function resetGame(){
     console.log("Should be reset");
+    window.location.reload();
 }

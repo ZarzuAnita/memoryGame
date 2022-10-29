@@ -14,12 +14,12 @@
             <form>
                 <div class="inputDiv">
                     <label>Player 1 Name:
-                        <input id="playerOneInput" type="text">
+                        <input id="playerOneInput" type="text" min="3">
                     </label>
                 </div>
                 <div class="inputDiv">
                     <label>Player 2 Name:
-                        <input id="playerTwoInput" type="text">
+                        <input id="playerTwoInput" type="text" min="3">
                     </label>
                 </div>
                 <div class="inputDiv">
@@ -37,8 +37,18 @@
             <button onclick="initializeGame()">Start Game!</button>
             </div>
         </div>
-        <div id="board">
-            <p>Aqui hay un tablero</p>
+        <div id="gameScreen">
+            <div id="board"></div>
+            <div id="statusBar">
+                <div class="playerScore">
+                    <p id="playerOneName">Player One Name</p>
+                    <p id="playerOneScore">Player One Score</p>
+                </div>
+                <div class="playerScore">
+                    <p id="playerOneName">Player Two Name</p>
+                    <p id="playerOneScore">Player Two Score</p>
+                </div>
+            </div>
         </div>
         <div id="endScreen">
             <p>Aqui te muestra el ganador</p>
