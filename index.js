@@ -23,9 +23,25 @@ function initializeGame(){
     const playerTwoName = document.getElementById("playerTwoInput").value;
     const numberOfCards = parseInt(document.getElementById("level").value);
     console.log(numberOfCards);
-    if (validateInput(playerOneName, playerTwoName, numberOfCards))
+    if (validateInput(playerOneName, playerTwoName, numberOfCards)){
+        inputUser (playerOneName, playerTwoName);
+        updateScore();
         placeBoard(numberOfCards);
+    }
 }
+
+function inputUser(playerOneName, playerTwoName){ 
+    document.getElementById("playerOneName").innerHTML = playerOneName;
+    document.getElementById("playerTwoName").innerHTML = playerTwoName;
+    gameState.playerOneName = playerOneName;
+    gameState.playerTwoName = playerTwoName;
+}
+
+function updateScore (){
+    document.getElementById("playerOneScore").innerHTML = gameState.playerOneScore;
+    document.getElementById("playerTwoScore").innerHTML = gameState.playerTwoScore;
+}
+
 
 function validateInput(playerOneName, playerTwoName, numberOfCards){
     if (playerOneName.length < 3 || playerTwoName.length < 3){
