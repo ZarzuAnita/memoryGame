@@ -6,6 +6,14 @@ Game state logic
 Complete click logic
 Ending logic and reset option (simple page reload?)
 
+acción cuando finaliza juego
+añadir objeto turno player
+actualizar score
+ocultar form--> tiene que ir asociado con mostrar tablero
+animación cartas
+header
+footer
+
 */
 
 const gameState = {
@@ -24,7 +32,8 @@ function initializeGame(){
     const numberOfCards = parseInt(document.getElementById("level").value);
     console.log(numberOfCards);
     if (validateInput(playerOneName, playerTwoName, numberOfCards)){
-        inputUser (playerOneName, playerTwoName);
+        // ocultar form
+        inputUser(playerOneName, playerTwoName);
         updateScore();
         placeBoard(numberOfCards);
     }
@@ -89,7 +98,7 @@ function randomOrderArray(numberOfCards){
 
 function handleCardClick(event){
     const currentCard = event.target;
-    if (currentCard.dataset.faceUp === "0"){
+    if (currentCard.dataset.faceUp === "0" && gameState.currentCards.length < 2){
         gameState.currentCards.push(currentCard.dataset.value);
         currentCard.innerHTML = currentCard.dataset.value;
         currentCard.dataset.faceUp = 1;
@@ -110,7 +119,7 @@ function checkOutcome(){
         removeCardVisibility();
     }
     else {
-        gameState.playerOneTurn = !gameState.playerOneTurn;
+        gameState.playerOneTurn = !gameState.playerOneTurn; /* evento cambio de turno introducir objeto*/
         revertCardFaces();
     }
     gameState.currentCards = [];
