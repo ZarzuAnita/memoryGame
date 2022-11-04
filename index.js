@@ -2,17 +2,9 @@ console.log("JS Loaded!");
 
 /*
 TODO:
-Game state logic
-Complete click logic
-Ending logic and reset option (simple page reload?)
-
-acción cuando finaliza juego
 añadir objeto turno player
-actualizar score
-ocultar form--> tiene que ir asociado con mostrar tablero
+añadir etiqueta a las cartas para poder dar formato
 animación cartas
-header
-footer
 
 */
 
@@ -31,13 +23,20 @@ function initializeGame(){
     const playerTwoName = document.getElementById("playerTwoInput").value;
     const numberOfCards = parseInt(document.getElementById("level").value);
     console.log(numberOfCards);
-    if (validateInput(playerOneName, playerTwoName, numberOfCards)){
-        // ocultar form
+    if (validateInput(playerOneName, playerTwoName, numberOfCards)){       
         inputUser(playerOneName, playerTwoName);
+        gameState.maxPoints = numberOfCards / 2;
         updateScore();
         placeBoard(numberOfCards);
+        document.getElementById("userForm").style.display = "none";
+        document.getElementById("gameScreen").style.display = "block";
+        
     }
 }
+    
+
+
+
 
 function inputUser(playerOneName, playerTwoName){ 
     document.getElementById("playerOneName").innerHTML = playerOneName;
@@ -46,11 +45,10 @@ function inputUser(playerOneName, playerTwoName){
     gameState.playerTwoName = playerTwoName;
 }
 
-function updateScore (){
+function updateScore(){
     document.getElementById("playerOneScore").innerHTML = gameState.playerOneScore;
     document.getElementById("playerTwoScore").innerHTML = gameState.playerTwoScore;
 }
-
 
 function validateInput(playerOneName, playerTwoName, numberOfCards){
     if (playerOneName.length < 3 || playerTwoName.length < 3){
@@ -107,24 +105,41 @@ function handleCardClick(event){
         }
         console.log(gameState);
     }
-}
+} 
 
 function checkOutcome(){
     console.log("Decide what should happen");
     if (gameState.currentCards[0] === gameState.currentCards[1]){
-        if (gameState.playerOneTurn)
-            gameState.playerOneScore++;
+        if (gameState.playerOneTurn) 
+            gameState.playerOneScore++;    
         else
             gameState.playerTwoScore++;
         removeCardVisibility();
-    }
+        updateScore();
+    } 
     else {
         gameState.playerOneTurn = !gameState.playerOneTurn; /* evento cambio de turno introducir objeto*/
         revertCardFaces();
     }
     gameState.currentCards = [];
+     
+    if(gameState.playerOneScore + gameState.playerTwoScore === gameState.maxPoints){
+        endGame();
+    }
 }
 
+function endGame(){
+    if (gameState.playerOneScore === gameState.playerTwoScore){
+        document.getElementById("winner").innerHTML = "Empate";
+      
+    }
+   else {
+        const finalResult = gameState.playerOneScore > gameState.playerTwoScore ? gameState.playerOneName : gameState.playerTwoName;
+        document.getElementById("winner").innerHTML = `${finalResult} ha ganado la partida`;
+   } 
+   document.getElementById("gameScreen").style.display = "none";
+   document.getElementById("endScreen").style.display = "block";
+}
 function removeCardVisibility(){
     const cardsArray = document.getElementsByClassName("card");
     for (let card of cardsArray){
