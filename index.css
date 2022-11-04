@@ -23,6 +23,11 @@ body {
     background: linear-gradient(90deg, rgba(44,199,217,0.8) 28%, rgba(32,28,30,1) 100%);
 }
 
+
+#userForm{
+    display:none;
+}
+
 .img {
     width: "200 px";
     height: "200 px";
@@ -67,6 +72,7 @@ button:hover {
     width: 35%;
     justify-content: center;
     align-items: center;
+    display: none;
 }
 
 #board {
@@ -97,4 +103,5 @@ button:hover {
 #endScreen {
     border: 1px solid red;
     color: red;
+    display:none;
 }
