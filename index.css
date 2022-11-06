@@ -82,6 +82,7 @@ button:hover {
     border: 2px solid black;
     border-radius: 10px;
     text-align: center;
+    font-family: "Brush Script MT", cursive;
     font-size: 50px;
     color: yellow;
 }

@@ -2,8 +2,8 @@ console.log("JS Loaded!");
 
 /*
 TODO:
-añadir objeto turno player
-añadir etiqueta a las cartas para poder dar formato
+añadir objeto turno player (Tener atado a header?)
+Seleccionar mejor font para las cartas ?
 animación cartas
 
 */
@@ -22,7 +22,6 @@ function initializeGame() {
     const playerOneName = document.getElementById("playerOneInput").value;
     const playerTwoName = document.getElementById("playerTwoInput").value;
     const numberOfCards = parseInt(document.getElementById("level").value);
-    console.log(numberOfCards);
     if (validateInput(playerOneName, playerTwoName, numberOfCards)) {
         inputUser(playerOneName, playerTwoName);
         gameState.maxPoints = numberOfCards / 2;
@@ -68,10 +67,12 @@ function placeBoard(numberOfCards) {
     console.log(boardOrder);
     boardOrder.forEach(pairValue => {
         const newDiv = document.createElement("div");
+        const newP = document.createElement("p");
         newDiv.className = "card";
         newDiv.dataset.value = pairValue;
         newDiv.dataset.faceUp = 0;
         newDiv.addEventListener("click", handleCardClick);
+        newDiv.appendChild(newP);
         parent.appendChild(newDiv);
     });
 }
@@ -91,7 +92,7 @@ function handleCardClick(event) {
     const currentCard = event.target;
     if (currentCard.dataset.faceUp === "0" && gameState.currentCards.length < 2) {
         gameState.currentCards.push(currentCard.dataset.value);
-        currentCard.innerHTML = currentCard.dataset.value;
+        currentCard.children[0].innerHTML = currentCard.dataset.value;
         currentCard.dataset.faceUp = 1;
         if (gameState.currentCards.length === 2)
             setTimeout(checkOutcome, 1500);
@@ -139,7 +140,7 @@ function revertCardFaces() {
     const cardsArray = document.getElementsByClassName("card");
     for (let card of cardsArray) {
         if (card.dataset.faceUp === "1") {
-            card.innerHTML = "";
+            card.children[0].innerHTML = "";
             card.dataset.faceUp = 0;
         }
     }
