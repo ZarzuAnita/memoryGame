@@ -92,6 +92,11 @@ button:hover {
     transition: transform 0.5s;
 }
 
+.cardFading {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+}
+
 #endScreen {
     border: 1px solid red;
     color: red;

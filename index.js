@@ -134,8 +134,12 @@ function removeCardVisibility() {
     const cardsArray = document.getElementsByClassName("card");
     for (let card of cardsArray) {
         if (card.dataset.faceUp === "1") {
-            card.dataset.faceUp = 0;
-            card.style.visibility = "hidden";
+            card.classList.add("cardFading");
+            setTimeout(() => {
+                card.dataset.faceUp = 0;
+                card.style.visibility = "hidden";
+                card.classList.remove("cardFading");
+            }, 300);
         }
     }
 }
