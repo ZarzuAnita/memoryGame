@@ -92,8 +92,12 @@ function handleCardClick(event) {
     const currentCard = event.target;
     if (currentCard.dataset.faceUp === "0" && gameState.currentCards.length < 2) {
         gameState.currentCards.push(currentCard.dataset.value);
-        currentCard.children[0].innerHTML = currentCard.dataset.value;
-        currentCard.dataset.faceUp = 1;
+        currentCard.classList.add("cardFlipping");
+        setTimeout(() => {
+            currentCard.classList.remove("cardFlipping");
+            currentCard.children[0].innerHTML = currentCard.dataset.value;
+            currentCard.dataset.faceUp = 1;
+        }, 300);
         if (gameState.currentCards.length === 2)
             setTimeout(checkOutcome, 1500);
     }
@@ -130,8 +134,12 @@ function removeCardVisibility() {
     const cardsArray = document.getElementsByClassName("card");
     for (let card of cardsArray) {
         if (card.dataset.faceUp === "1") {
-            card.dataset.faceUp = 0;
-            card.style.visibility = "hidden";
+            card.classList.add("cardFading");
+            setTimeout(() => {
+                card.dataset.faceUp = 0;
+                card.style.visibility = "hidden";
+                card.classList.remove("cardFading");
+            }, 300);
         }
     }
 }
@@ -140,8 +148,12 @@ function revertCardFaces() {
     const cardsArray = document.getElementsByClassName("card");
     for (let card of cardsArray) {
         if (card.dataset.faceUp === "1") {
-            card.children[0].innerHTML = "";
-            card.dataset.faceUp = 0;
+            card.classList.add("cardFlipping");
+            setTimeout(() => {
+                card.children[0].innerHTML = "";
+                card.dataset.faceUp = 0;
+                card.classList.remove("cardFlipping");
+            }, 150);
         }
     }
 }
