@@ -87,6 +87,11 @@ button:hover {
     color: yellow;
 }
 
+.cardFlipping {
+    transform: rotateY(180deg);
+    transition: transform 0.5s;
+}
+
 #endScreen {
     border: 1px solid red;
     color: red;
