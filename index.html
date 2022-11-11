@@ -17,7 +17,7 @@
         </div>
     </header>
     <div id="screen">
-        <div id="userForm">
+        <div id="userForm" class="userForm">
             <form>
                 <div class="inputDiv">
                     <label>Player 1 Name:
@@ -44,7 +44,7 @@
                 <button id="button1" onclick="initializeGame()">Start Game!</button>
             </div>
         </div>
-        <div id="gameScreen">
+        <div id="gameScreen" class="not-displayed">
             <div id="board"></div>
             <div id="statusBar">
                 <div class="playerScore">
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div id="endScreen">
+        <div id="endScreen" class="not-displayed">
             <p id="winner">ganador</p>
             <button onclick="resetGame()">Play Again!</button>
         </div>

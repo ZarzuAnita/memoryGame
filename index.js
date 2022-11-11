@@ -26,9 +26,10 @@ function initializeGame() {
         inputUser(playerOneName, playerTwoName);
         gameState.maxPoints = numberOfCards / 2;
         placeBoard(numberOfCards);
-        document.getElementById("userForm").style.display = "none";
-        document.getElementById("gameScreen").style.display = "block";
-
+        document.getElementById("userForm").classList.remove("userForm");
+        document.getElementById("userForm").classList.add("not-displayed");
+        document.getElementById("gameScreen").classList.remove("not-displayed");
+        document.getElementById("gameScreen").classList.add("gameScreen");
     }
 }
 
@@ -118,14 +119,16 @@ function checkOutcome() {
 
 function endGame() {
     if (gameState.playerOneScore === gameState.playerTwoScore) {
-        document.getElementById("winner").innerHTML = "Empate";
+        document.getElementById("winner").innerHTML = "The game ends in a tie!";
     }
     else {
         const finalResult = gameState.playerOneScore > gameState.playerTwoScore ? gameState.playerOneName : gameState.playerTwoName;
-        document.getElementById("winner").innerHTML = `${finalResult} ha ganado la partida`;
+        document.getElementById("winner").innerHTML = `${finalResult} has won this match`;
     }
-    document.getElementById("gameScreen").style.display = "none";
-    document.getElementById("endScreen").style.display = "block";
+    document.getElementById("gameScreen").classList.remove("gameScreen");
+    document.getElementById("gameScreen").classList.add("not-displayed");
+    document.getElementById("endScreen").classList.remove("not-displayed");
+    document.getElementById("endScreen").classList.add("endScreen");
 }
 
 function removeCardVisibility() {
