@@ -2,9 +2,7 @@ console.log("JS Loaded!");
 
 /*
 TODO:
-añadir objeto turno player (Tener atado a header?)
-Seleccionar mejor font para las cartas ?
-animación cartas
+Edit drawFirstMove to modify which player has the turn in statusBar
 
 */
 
@@ -24,6 +22,7 @@ function initializeGame() {
     const numberOfCards = parseInt(document.getElementById("level").value);
     if (validateInput(playerOneName, playerTwoName, numberOfCards)) {
         inputUser(playerOneName, playerTwoName);
+        drawFirstMove();
         gameState.maxPoints = numberOfCards / 2;
         placeBoard(numberOfCards);
         document.getElementById("userForm").classList.remove("userForm");
@@ -36,6 +35,8 @@ function initializeGame() {
 function inputUser(playerOneName, playerTwoName) {
     document.getElementById("playerOneName").innerHTML = playerOneName;
     document.getElementById("playerTwoName").innerHTML = playerTwoName;
+    document.getElementById("playerOneTurn").innerHTML = playerOneName;
+    document.getElementById("playerTwoTurn").innerHTML = playerTwoName;
     gameState.playerOneName = playerOneName;
     gameState.playerTwoName = playerTwoName;
     updateScore();
@@ -44,6 +45,31 @@ function inputUser(playerOneName, playerTwoName) {
 function updateScore() {
     document.getElementById("playerOneScore").innerHTML = gameState.playerOneScore;
     document.getElementById("playerTwoScore").innerHTML = gameState.playerTwoScore;
+}
+
+function drawFirstMove() {
+    const playerOneTag = document.getElementById("playerOneTurn");
+    const playerTwoTag = document.getElementById("playerTwoTurn");
+    gameState.playerOneTurn = Math.random() < 0.5 ? true : false;
+    //give style to the player name with turn
+    const selectionInterval = setInterval(() => alternateSelected(playerOneTag, playerTwoTag), 250);
+    setTimeout(() => {
+        clearInterval(selectionInterval);
+        document.getElementById("turnNames").classList.remove("turnNames");
+        document.getElementById("turnNames").classList.add("not-displayed");
+    }, 3000);
+    document.getElementById("firstMove").innerHTML = `${gameState.playerOneTurn ? gameState.playerOneName : gameState.playerTwoName} has the first move!`;
+}
+
+function alternateSelected(playerOneTag, playerTwoTag) {
+    playerOneTag.classList.add("playerSelected");
+    setTimeout(() => {
+        playerOneTag.classList.remove("playerSelected");
+        playerTwoTag.classList.add("playerSelected");
+    },125);
+    setTimeout(() => {
+        playerTwoTag.classList.remove("playerSelected");
+    },250);
 }
 
 function validateInput(playerOneName, playerTwoName, numberOfCards) {
