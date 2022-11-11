@@ -44,6 +44,7 @@ function inputUser(playerOneName, playerTwoName) {
 function updateScore() {
     document.getElementById("playerOneScore").innerHTML = gameState.playerOneScore;
     document.getElementById("playerTwoScore").innerHTML = gameState.playerTwoScore;
+    document.getElementById("spread").innerHTML= `Tiradas restantes: ${gameState.maxPoints - gameState.playerOneScore - gameState.playerTwoScore }`;
 }
 
 function validateInput(playerOneName, playerTwoName, numberOfCards) {

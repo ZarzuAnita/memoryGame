@@ -70,7 +70,7 @@ button:hover {
 }
 
 .currentTurn { 
-    background-color: #CD6155;
+    background-color: #ce756b;
     margin: 4px;
     padding: 4px;
     border-radius: 2em;
@@ -78,7 +78,7 @@ button:hover {
 }
 #statusBar {
     border: 1px solid yellow;
-    width: 15%;
+    width: 20%;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-evenly;
@@ -117,3 +117,4 @@ button:hover {
     font-size: 15px;
     font-weight: bold;
 } 
+
