@@ -110,6 +110,15 @@ function checkOutcome() {
     }
     else {
         gameState.playerOneTurn = !gameState.playerOneTurn;
+        if(gameState.playerOneName){
+           document.getElementById("playerOneName").classList.add("currentTurn");
+           document.getElementById("playerTwoName").classList.remove("currentTurn");
+        }
+        else{
+            document.getElementById("playerTwoName").classList.add("currentTurn");
+            document.getElementById("playerOneName").classList.remove("currentTurn");
+        }
+
         revertCardFaces();
     }
     gameState.currentCards = [];
