@@ -97,17 +97,18 @@ button:hover {
 }
 
 .card {
-    width: 20%;
-    aspect-ratio: 1 / 1.5;
-    margin: 5px;
+    box-sizing: border-box;
+    width: 15%;
+    aspect-ratio: 1 / 1.25;
     border: 2px solid black;
     border-radius: 10px;
+    margin: 5px;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     font-family: "Brush Script MT", cursive;
-    font-size: 50px;
+    font-size: 4vw;
     color: #ffff00;
 }
 
