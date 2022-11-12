@@ -3,7 +3,7 @@ console.log("JS Loaded!");
 /*
 TODO:
 Edit drawFirstMove to modify which player has the turn in statusBar
-
+Show and hide logic pending for random turn draw
 */
 
 const gameState = {
@@ -57,6 +57,8 @@ function drawFirstMove() {
         clearInterval(selectionInterval);
         document.getElementById("turnNames").classList.remove("turnNames");
         document.getElementById("turnNames").classList.add("not-displayed");
+        document.getElementById("firstMove").classList.remove("not-displayed");
+        document.getElementById("firstMove").classList.add("firstMove");
     }, 3000);
     document.getElementById("firstMove").innerHTML = `${gameState.playerOneTurn ? gameState.playerOneName : gameState.playerTwoName} has the first move!`;
 }
