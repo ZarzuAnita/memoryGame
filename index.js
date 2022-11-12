@@ -44,6 +44,7 @@ function inputUser(playerOneName, playerTwoName) {
 function updateScore() {
     document.getElementById("playerOneScore").innerHTML = gameState.playerOneScore;
     document.getElementById("playerTwoScore").innerHTML = gameState.playerTwoScore;
+    document.getElementById("spread").innerHTML= `Tiradas restantes: ${gameState.maxPoints - gameState.playerOneScore - gameState.playerTwoScore }`;
 }
 
 function validateInput(playerOneName, playerTwoName, numberOfCards) {
@@ -110,6 +111,15 @@ function checkOutcome() {
     }
     else {
         gameState.playerOneTurn = !gameState.playerOneTurn;
+        if(gameState.playerOneName){
+           document.getElementById("playerOneName").classList.add("currentTurn");
+           document.getElementById("playerTwoName").classList.remove("currentTurn");
+        }
+        else{
+            document.getElementById("playerTwoName").classList.add("currentTurn");
+            document.getElementById("playerOneName").classList.remove("currentTurn");
+        }
+
         revertCardFaces();
     }
     gameState.currentCards = [];
