@@ -159,10 +159,13 @@ function checkOutcome() {
 function endGame() {
     if (gameState.playerOneScore === gameState.playerTwoScore) {
         document.getElementById("winner").innerHTML = "The game ends in a tie!";
+        document.getElementById("emoji").innerHTML = "&#129309";
+
     }
     else {
         const finalResult = gameState.playerOneScore > gameState.playerTwoScore ? gameState.playerOneName : gameState.playerTwoName;
         document.getElementById("winner").innerHTML = `${finalResult} has won this match!`;
+        document.getElementById("emoji").innerHTML = "&#127881;";
     }
     document.getElementById("gameScreen").classList.remove("gameScreen");
     document.getElementById("gameScreen").classList.add("not-displayed");
