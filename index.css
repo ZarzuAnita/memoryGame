@@ -1,6 +1,4 @@
 body {
-    width: 100%;
-    background: rgb(44,199,217);
     background: linear-gradient(90deg, rgba(44,199,217,0.8) 28%, rgba(32,28,30,1) 100%);
 }
 
@@ -30,7 +28,7 @@ body {
     display: flex;
     flex-flow: column nowrap;
     width: 35%;
-    border: 1px solid black;
+    border: 1px solid #000000;
 }
 
 .inputDiv {
@@ -48,7 +46,7 @@ button:hover {
     opacity: 0.9;
 }
 
-#turnSelector {
+.turnSelector {
     width: 50%;
     display: flex;
     flex-flow: column nowrap;
@@ -65,14 +63,16 @@ button:hover {
 
 .playerTurn {
     border: 2px solid transparent;
+    padding: 5px;
     font-size: 50px;
 }
 
 .playerSelected {
-    border-color: orange;
+    border-color: #ffa601;
 }
 
 .firstMove {
+    text-align: center;
     font-size: 50px;
 }
 
@@ -89,7 +89,6 @@ button:hover {
 }
 
 #board {
-    color: red;
     width: 80%;
     border: 1px solid red;
     display: flex;
@@ -97,32 +96,19 @@ button:hover {
     justify-content: space-evenly;
 }
 
-.currentTurn { 
-    background-color: #ce756b;
-    margin: 4px;
-    padding: 4px;
-    border-radius: 2em;
-
-}
-#statusBar {
-    border: 1px solid yellow;
-    width: 20%;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
 .card {
-    height: 150px;
-    width: 75px;
+    width: 20%;
+    aspect-ratio: 1 / 1.5;
     margin: 5px;
     border: 2px solid black;
     border-radius: 10px;
-    text-align: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
     font-family: "Brush Script MT", cursive;
     font-size: 50px;
-    color: yellow;
+    color: #ffff00;
 }
 
 .cardFlipping {
@@ -135,14 +121,37 @@ button:hover {
     transition: opacity 0.5s linear;
 }
 
-.endScreen {
-    border: 1px solid red;
-    color: red;
+#statusBar {
+    border: 1px solid #ffff00;
+    width: 20%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.playerScore {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #ffffff;
 }
 
 #playerOneName , #playerTwoName {
     font-family: sans-serif;
     font-size: 15px;
     font-weight: bold;
-} 
+    margin: 4px;
+    padding: 4px;
+    border-radius: 2em;
+}
 
+.currentTurn { 
+    background-color: #ce756b;
+}
+
+.endScreen {
+    border: 1px solid red;
+    color: red;
+}
