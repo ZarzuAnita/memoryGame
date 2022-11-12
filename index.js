@@ -120,6 +120,8 @@ function randomOrderArray(numberOfCards) {
 
 function handleCardClick(event) {
     const currentCard = event.target;
+    if (currentCard.tagName === "P")
+        return ;
     if (gameState.currentCards.indexOf(currentCard) === -1 && gameState.currentCards.length < 2) {
         gameState.currentCards.push(currentCard);
         currentCard.classList.add("cardFlipping");
