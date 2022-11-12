@@ -21,16 +21,16 @@
             <form>
                 <div class="inputDiv">
                     <label>Player 1 Name:
-                        <input id="playerOneInput" type="text" placeholder="Introduce mínimo 3 letras" min="3">
+                        <input id="playerOneInput" type="text" placeholder="At least 3 characters" min="3">
                     </label>
                 </div>
                 <div class="inputDiv">
                     <label>Player 2 Name:
-                        <input id="playerTwoInput" type="text" placeholder="Introduce mínimo 3 letras" min="3">
+                        <input id="playerTwoInput" type="text" placeholder="At least 3 characters" min="3">
                     </label>
                 </div>
                 <div class="inputDiv">
-                    <label>Selecciona un nivel:
+                    <label>Select a level:
                         <select id="level">
                             <option></option>
                             <option value="12">12 Cards</option>
@@ -44,24 +44,32 @@
                 <button id="button1" onclick="initializeGame()">Start Game!</button>
             </div>
         </div>
+        <div id="turnSelector" class="not-displayed">
+            <h3>Selecting who will start...</h3>
+            <div id="turnNames" class="turnNames">
+                <p id="playerOneTurn" class="playerTurn">Player 1</p>
+                <p id="playerTwoTurn" class="playerTurn">Player 2</p>
+            </div>
+            <p id="firstMove" class="not-displayed">Player who starts</p>
+        </div>
         <div id="gameScreen" class="not-displayed">
             <div id="board"></div>
             <div id="statusBar">
                 <div class="playerScore">
-                    <p id="playerOneName" class="currentTurn">Player One Name</p>
-                    <p id="playerOneScore" >Player One Score</p>
+                    <p id="playerOneName">Player One Name</p>
+                    <p id="playerOneScore">Player One Score</p>
                 </div>
                 <div class="playerScore">
                     <p id="playerTwoName">Player Two Name</p>
                     <p id="playerTwoScore">Player Two Score</p>
                 </div>
-                <div class="spreads">
-                    <p id="spread">Tiradas restantes:</p>
+                <div class="playerScore">
+                    <p id="spread">Remaining turns:</p>
                 </div>
             </div>
         </div>
         <div id="endScreen" class="not-displayed">
-            <p id="winner">ganador</p>
+            <p id="winner">Winning Player</p>
             <button onclick="resetGame()">Play Again!</button>
         </div>
     </div>
