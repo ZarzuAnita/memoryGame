@@ -1,5 +1,3 @@
-console.log("JS Loaded!");
-
 const gameState = {
     playerOneName: "",
     playerTwoName: "",
@@ -18,7 +16,7 @@ function initializeGame() {
         inputUser(playerOneName, playerTwoName);
         drawFirstMove();
         gameState.maxPoints = numberOfCards / 2;
-        document.getElementById("spread").innerHTML= `Remaining turns: ${gameState.maxPoints - gameState.playerOneScore - gameState.playerTwoScore }`;
+        document.getElementById("spread").innerHTML = `Remaining turns: ${gameState.maxPoints - gameState.playerOneScore - gameState.playerTwoScore}`;
         placeBoard(numberOfCards);
         document.getElementById("userForm").classList.remove("userForm");
         document.getElementById("userForm").classList.add("not-displayed");
@@ -60,7 +58,7 @@ function inputUser(playerOneName, playerTwoName) {
 function updateScore() {
     document.getElementById("playerOneScore").innerHTML = gameState.playerOneScore;
     document.getElementById("playerTwoScore").innerHTML = gameState.playerTwoScore;
-    document.getElementById("spread").innerHTML= `Remaining turns: ${gameState.maxPoints - gameState.playerOneScore - gameState.playerTwoScore }`;
+    document.getElementById("spread").innerHTML = `Remaining turns: ${gameState.maxPoints - gameState.playerOneScore - gameState.playerTwoScore}`;
 }
 
 function drawFirstMove() {
@@ -86,16 +84,15 @@ function alternateSelected(playerOneTag, playerTwoTag) {
     setTimeout(() => {
         playerOneTag.classList.remove("playerSelected");
         playerTwoTag.classList.add("playerSelected");
-    },125);
+    }, 125);
     setTimeout(() => {
         playerTwoTag.classList.remove("playerSelected");
-    },250);
+    }, 250);
 }
 
 function placeBoard(numberOfCards) {
     const boardOrder = randomOrderArray(numberOfCards);
     const parent = document.getElementById("board");
-    console.log(boardOrder);
     boardOrder.forEach(pairValue => {
         const newDiv = document.createElement("div");
         const newP = document.createElement("p");
@@ -121,7 +118,7 @@ function randomOrderArray(numberOfCards) {
 function handleCardClick(event) {
     const currentCard = event.target;
     if (currentCard.tagName === "P")
-        return ;
+        return;
     if (gameState.currentCards.indexOf(currentCard) === -1 && gameState.currentCards.length < 2) {
         gameState.currentCards.push(currentCard);
         currentCard.classList.add("cardFlipping");
@@ -142,11 +139,11 @@ function checkOutcome() {
     }
     else {
         gameState.playerOneTurn = !gameState.playerOneTurn;
-        if(gameState.playerOneTurn){
-           document.getElementById("playerOneName").classList.add("currentTurn");
-           document.getElementById("playerTwoName").classList.remove("currentTurn");
+        if (gameState.playerOneTurn) {
+            document.getElementById("playerOneName").classList.add("currentTurn");
+            document.getElementById("playerTwoName").classList.remove("currentTurn");
         }
-        else{
+        else {
             document.getElementById("playerTwoName").classList.add("currentTurn");
             document.getElementById("playerOneName").classList.remove("currentTurn");
         }
@@ -156,23 +153,6 @@ function checkOutcome() {
     gameState.currentCards = [];
     if (gameState.playerOneScore + gameState.playerTwoScore === gameState.maxPoints)
         endGame();
-}
-
-function endGame() {
-    if (gameState.playerOneScore === gameState.playerTwoScore) {
-        document.getElementById("winner").innerHTML = "The game ends in a tie!";
-        document.getElementById("emoji").innerHTML = "&#129309";
-
-    }
-    else {
-        const finalResult = gameState.playerOneScore > gameState.playerTwoScore ? gameState.playerOneName : gameState.playerTwoName;
-        document.getElementById("winner").innerHTML = `${finalResult} has won this match!`;
-        document.getElementById("emoji").innerHTML = "&#127881;";
-    }
-    document.getElementById("gameScreen").classList.remove("gameScreen");
-    document.getElementById("gameScreen").classList.add("not-displayed");
-    document.getElementById("endScreen").classList.remove("not-displayed");
-    document.getElementById("endScreen").classList.add("endScreen");
 }
 
 function removeCardVisibility() {
@@ -195,6 +175,22 @@ function revertCardFaces() {
             card.classList.remove("cardFlipping");
         }, 150);
     });
+}
+
+function endGame() {
+    if (gameState.playerOneScore === gameState.playerTwoScore) {
+        document.getElementById("winner").innerHTML = "The game ends in a tie!";
+        document.getElementById("emoji").innerHTML = "&#129309";
+    }
+    else {
+        const finalResult = gameState.playerOneScore > gameState.playerTwoScore ? gameState.playerOneName : gameState.playerTwoName;
+        document.getElementById("winner").innerHTML = `${finalResult} has won this match!`;
+        document.getElementById("emoji").innerHTML = "&#127881;";
+    }
+    document.getElementById("gameScreen").classList.remove("gameScreen");
+    document.getElementById("gameScreen").classList.add("not-displayed");
+    document.getElementById("endScreen").classList.remove("not-displayed");
+    document.getElementById("endScreen").classList.add("endScreen");
 }
 
 function resetGame() {
