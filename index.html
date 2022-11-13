@@ -20,17 +20,17 @@
         <div id="userForm" class="userForm">
             <form>
                 <div class="inputDiv">
-                    <label>Player 1 Name:
+                    <label id="playerName">Player 1 Name:
                         <input id="playerOneInput" type="text" placeholder="At least 3 characters" min="3">
                     </label>
                 </div>
                 <div class="inputDiv">
-                    <label>Player 2 Name:
+                    <label id="playerName">Player 2 Name:
                         <input id="playerTwoInput" type="text" placeholder="At least 3 characters" min="3">
                     </label>
                 </div>
                 <div class="inputDiv">
-                    <label>Select a level:
+                    <label id="selectLevel">Select a level:
                         <select id="level">
                             <option></option>
                             <option value="12">12 Cards</option>
@@ -69,13 +69,16 @@
             </div>
         </div>
         <div id="endScreen" class="not-displayed">
-            <p id="winner">Winning Player</p>
-            <button onclick="resetGame()">Play Again!</button>
+            <div id="textEndScreen">
+                <p id="winner">Winning Player</p>
+                <p id="emoji">Emojis</p>
+            </div>
+            <button id="button2" onclick="resetGame()">Play Again!</button>
         </div>
     </div>
     <footer>
         <div id="footer">
-            <p>Made with ❤️ at The Bridge</p>
+            <p>Made with &#10084;&#65039; at The Bridge</p>
         </div>
     </footer>
 </body>
