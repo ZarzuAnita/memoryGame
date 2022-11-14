@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -20,12 +20,12 @@
         <div id="userForm" class="userForm">
             <form>
                 <div class="inputDiv">
-                    <label id="playerName">Player 1 Name:
+                    <label class="playerNameLabel">Player 1 Name:
                         <input id="playerOneInput" type="text" placeholder="At least 3 characters" min="3">
                     </label>
                 </div>
                 <div class="inputDiv">
-                    <label id="playerName">Player 2 Name:
+                    <label class="playerNameLabel">Player 2 Name:
                         <input id="playerTwoInput" type="text" placeholder="At least 3 characters" min="3">
                     </label>
                 </div>
@@ -41,7 +41,7 @@
                 </div>
             </form>
             <div class="inputDiv">
-                <button id="button1" onclick="initializeGame()">Start Game!</button>
+                <button class="button" onclick="initializeGame()">Start Game!</button>
             </div>
         </div>
         <div id="turnSelector" class="not-displayed">
@@ -73,7 +73,7 @@
                 <p id="winner">Winning Player</p>
                 <p id="emoji">Emojis</p>
             </div>
-            <button id="button2" onclick="resetGame()">Play Again!</button>
+            <button class="button" onclick="resetGame()">Play Again!</button>
         </div>
     </div>
     <footer>
